@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.DiscussMapper">
+
+   <resultMap id="BaseResultMap" type="com.java.pojo.Discuss">
+    <id column="did" jdbcType="INTEGER" property="did" />
+    <result column="discuss_title" jdbcType="VARCHAR" property="discussTitle" />
+    <result column="publish_id" jdbcType="BIGINT" property="publishId" />
+    <result column="publish_daate" jdbcType="TIMESTAMP" property="publishDaate" />
+  </resultMap>
+  <!--
+  <sql id="Base_Column_List">
+    did, discuss_title, publish_id, publish_daate
+  </sql> -->
+  
+  <insert id="saveDiscuss">
+    insert into web_discuss (discuss_title, publish_id, publish_daate)
+    values (#{discussTitle}, #{did}, #{date})
+  </insert>
+  
+  <select id="getDiscuss" resultMap="BaseResultMap">
+  	select 
+  	did, discuss_title, publish_id, publish_daate
+  	from web_discuss
+  </select>
+  
+  <delete id="deleteDiscuss">
+  	delete 
+  	from web_discuss
+    where did = #{did}
+  </delete>
+ 
+ <select id="findDiscuss" resultMap="BaseResultMap">
+ 	select 
+  	did, discuss_title, publish_id, publish_daate
+  	from web_discuss
+  	where did = #{did}
+ </select>
+ 
+</mapper>

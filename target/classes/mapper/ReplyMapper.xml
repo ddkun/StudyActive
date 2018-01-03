@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.ReplyMapper">
+  <resultMap id="BaseResultMap" type="com.java.pojo.Reply">
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="reply_content" jdbcType="VARCHAR" property="replyContent" />
+    <result column="reply_id" jdbcType="BIGINT" property="replyId" />
+    <result column="reply_date" jdbcType="TIMESTAMP" property="replyDate" />
+    <result column="discuss_id" jdbcType="INTEGER" property="discussId" />
+  </resultMap>
+  
+  <select id="getReply" resultMap="BaseResultMap">
+  	 select 
+     rid, reply_content, reply_id, reply_date, discuss_id
+     from web_reply
+     where discuss_id = #{did}
+  </select>
+  
+  <insert id="saveReply">
+  	insert into 
+  	web_reply(reply_content, reply_id, reply_date, discuss_id)
+  	values(#{replyContent},#{account},#{date},#{did})
+  </insert>
+  
+  <delete id="deleteReply">
+  	delete from web_reply where rid=#{rid}
+  </delete>
+</mapper>

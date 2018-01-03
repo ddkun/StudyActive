@@ -1,0 +1,67 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<commentGenerator>
+        <property name="suppressDate" value="true"/>
+        <property name="suppressAllComments" value="true" />
+    </commentGenerator>
+    
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql:///studyactive"
+        userId="root"
+        password="123456">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="pojo" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="mapper"  targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	
+    <table tableName="web_user" domainObjectName="User" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/>
+    <table tableName="web_class" domainObjectName="Subject" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/>
+    <table tableName="web_sign" domainObjectName="Sign" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/>
+    <table tableName="web_student_subject" domainObjectName="studentToSubject" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/> 
+    <table tableName="web_notice" domainObjectName="Notice" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/> 
+    <table tableName="web_classInfo" domainObjectName="ClassInfo" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/>
+    <table tableName="web_discuss" domainObjectName="Discuss" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/> 
+    <table tableName="web_reply" domainObjectName="Reply" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/> 
+    <table tableName="web_file" domainObjectName="File" 
+    	enableCountByExample="false" enableDeleteByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false"/> 
+  </context>
+</generatorConfiguration>
+ -->

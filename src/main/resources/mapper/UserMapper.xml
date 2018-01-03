@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.UserMapper">
+
+<!--   <resultMap id="BaseResultMap" type="com.java.pojo.User">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="account" jdbcType="BIGINT" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="regDate" jdbcType="DATE" property="regdate" />
+    <result column="role" jdbcType="INTEGER" property="role" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    uid, account, password, name, gender, email, regDate, role
+  </sql> -->
+  
+  <select id="getUser" parameterType="com.java.pojo.User" resultType="com.java.pojo.User">
+  		select 
+  		uid, account, password, name, gender, email, regDate, role
+  		from web_user where account = #{account} and password = #{password} and role = #{role}
+  </select>
+  
+  <update id="update" parameterType="com.java.pojo.User">
+  	update web_user 
+  	<set>
+  		<if test="gender != null">
+  			gender =#{gender}
+  		</if>
+  		<if test="email != null">
+  			email =#{email}
+  		</if>
+  		<if test="password != null">
+  			password =#{password}
+  		</if>
+  	</set>
+  	where account=#{account}
+  </update>
+</mapper>

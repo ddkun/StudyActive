@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.GroupMapper">
+
+  <resultMap id="BaseResultMap" type="com.java.pojo.Group">
+    <id column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="student_id" jdbcType="BIGINT" property="studentId" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    gid, group_name, student_id
+  </sql>
+  
+  <select id="getGroup" resultType="map">
+  	select * 
+  	from web_group ,web_user
+  	where 
+		account=student_id 
+		and group_name = (
+		select group_name from web_group where student_id=#{account} )
+  </select>
+  
+  <update id="updateName">
+  	update web_group 
+  	set group_name = #{name}
+  	where student_id = #{account}
+  </update>
+  
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.NoticeMapper">
+
+  <resultMap id="BaseResultMap" type="com.java.pojo.Notice">
+    <id column="nid" jdbcType="INTEGER" property="nid" />
+    <result column="notice_desc" jdbcType="VARCHAR" property="noticeDesc" />
+    <result column="notice_content" jdbcType="VARCHAR" property="noticeContent" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    nid, notice_desc, notice_content, add_date, status
+  </sql>
+  
+  <select id="getNotice" resultMap="BaseResultMap">
+  	select 
+  	nid, notice_desc, notice_content, add_date, status
+    from web_notice order by status desc
+  </select>
+  
+  <select id="getNoticeCount" resultType="Integer">
+  	select count(*)
+    from web_notice where status = 0
+  </select>
+  
+  <select id="getNoticeInfo" resultType="String">
+  	select 
+  	notice_content
+    from  web_notice where nid = #{nid}
+  </select>
+  
+  <update id="updateNoticePage">
+  	update web_notice 
+  	set status = 1
+	where nid = #{nid}
+  </update>
+  
+  <delete id="deleteNotice">
+  	delete from web_notice where nid = #{nid}
+  </delete>
+  
+  <insert id="saveNotice" parameterType="com.java.pojo.Notice">
+  	insert into web_notice (notice_desc, notice_content, 
+      add_date, status)
+    values (#{noticeDesc}, #{noticeContent}, 
+      #{date}, #{status})
+  </insert>
+  
+</mapper>
